@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define MAX_INIMIGOS 3
+
+typedef struct {
+    char nome[20];
+    int vida;
+    int ataque;
+} Personagem;
+
+void atacar(Personagem *atacante, Personagem *alvo) {
+    int dano = rand() % atacante->ataque + 1; // dano aleatório
+    alvo->vida -= dano;
+    if (alvo->vida < 0) alvo->vida = 0;
+    printf("%s atacou %s e causou %d de dano! (Vida %s: %d)\n",
+           atacante->nome, alvo->nome, dano, alvo->nome, alvo->vida);
+}
+
+int main() {
+    srand(time(NULL));
+
+    Personagem jogador = {"Jogador", 100, 20};
+    Personagem inimigos[MAX_INIMIGOS] = {
+        {"Bot1", 50, 10},
+        {"Bot2", 60, 15},
+        {"Bot3", 80, 20}
+    };
+
+    printf("=== MINI FREE FIRE EM C ===\n");
+    printf("Voce comeca com %d de vida!\n\n", jogador.vida);
+
+    for (int i = 0; i < MAX_INIMIGOS; i++) {
+        printf("Um inimigo apareceu: %s (Vida: %d)\n\n",
+               inimigos[i].nome, inimigos[i].vida);
+
+        while (inimigos[i].vida > 0 && jogador.vida > 0) {
+            int escolha;
+            printf("1 - Atacar | 2 - Curar (+15 vida)\n");
+            printf("Sua escolha: ");
+            scanf("%d", &escolha);
+
+            if (escolha == 1) {
+                atacar(&jogador, &inimigos[i]);
+            } else if (escolha == 2) {
+                jogador.vida += 15;
+                if (jogador.vida > 100) jogador.vida = 100;
+                printf("Voce usou um kit e agora tem %d de vida!\n", jogador.vida);
+            } else {
+                printf("Opcao invalida! Voce perdeu a vez.\n");
+            }
+
+            if (inimigos[i].vida > 0) {
+                atacar(&inimigos[i], &jogador);
+            }
+        }
+
+        if (jogador.vida <= 0) {
+            printf("\nVoce foi eliminado pelo %s!\n", inimigos[i].nome);
+            printf("=== GAME OVER ===\n");
+            return 0;
+        }
+
+        printf("\n%s derrotado!\n\n", inimigos[i].nome);
+    }
+
+    printf("\nTodos os inimigos foram derrotados!\n");
+    printf("=== BOOYAH!!! ===\n");
+
+    return 0;
+}
