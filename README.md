@@ -1,4 +1,4 @@
-Mini Free Fire em C
+🎮 Mini Free Fire em C
 
 Trabalho para Segundo Período da Faculdade Estácio - Matheus.
 Simulação em texto inspirada no Free Fire, feita em linguagem C.
@@ -7,31 +7,31 @@ Se derrotar todos os inimigos, aparece o famoso grito “BOOYAH!”.
 
 🎮 Como funciona
 
-O jogador começa com 100 de vida e pode causar até 20 de dano.
+. O jogador começa com 100 de vida e pode causar até 20 de dano.
 
-Cada inimigo tem vida e força de ataque diferentes.
+. Cada inimigo tem vida e força de ataque diferentes.
 
-Durante a batalha, o jogador pode:
+. Durante a batalha, o jogador pode:
 
-Atacar (causando dano aleatório ao inimigo).
+1.Atacar (causando dano aleatório ao inimigo).
 
-Curar-se (+15 de vida, limitado a 100).
+2.Curar-se (+15 de vida, limitado a 100).
 
-Os inimigos também atacam de forma aleatória.
+. Os inimigos também atacam de forma aleatória.
 
-O jogo termina quando:
+. O jogo termina quando:
 
-O jogador perde toda a vida → GAME OVER.
+. O jogador perde toda a vida → GAME OVER.
 
-Todos os inimigos são derrotados → BOOYAH!
+. Todos os inimigos são derrotados → BOOYAH!
 
 ⚔️ Estrutura do código
 
-struct Personagem → Representa jogador e inimigos (nome, vida, ataque).
+.struct Personagem → Representa jogador e inimigos (nome, vida, ataque).
 
-atacar() → Função que calcula o dano e aplica no alvo.
+.atacar() → Função que calcula o dano e aplica no alvo.
 
-main() → Gerencia as batalhas, controle do jogo e interações.
+.main() → Gerencia as batalhas, controle do jogo e interações.
 
 ▶️ Como compilar e executar
 
